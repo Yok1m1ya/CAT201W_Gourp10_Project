@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "name": "Kuala Lumpur",
+      "image": "/src/assets/images/regions/KL.jpg",
+      "key": "KL",
+      "description": "Malaysia's capital Kuala Lumpur is known for its skyscrapers and cultural diversity. Rise to the top of the iconic Petronas Twin Towers, explore the bustling streets of Bukit Bintang, or visit the sacred Batu Caves.",
+      "bestTime": "JAN",
+      "duration": "3 days",
+      "bestTimeDetail": "Thaipusam Festival in Batu Caves"
+    },
+    {
+      "id": 2,
+      "name": "Singapore",
+      "image": "/src/assets/images/regions/SG.jpg",
+      "key": "SG",
+      "description": "A global financial center with tropical gardens, diverse cultural enclaves, and world-class attractions like Gardens by the Bay and Universal Studios.",
+      "bestTime": "FEB-APR",
+      "duration": "4 days",
+      "bestTimeDetail": "Pleasant weather and various festivals"
+    },
+    {
+      "id": 3,
+      "name": "Shanghai",
+      "image": "/src/assets/images/regions/SH.jpg",
+      "key": "SH",
+      "description": "Experience the perfect blend of traditional and modern China in Shanghai, featuring the iconic Bund, ancient gardens, and towering skyscrapers.",
+      "bestTime": "OCT-NOV",
+      "duration": "4 days",
+      "bestTimeDetail": "Pleasant autumn weather"
+    },
+    {
+      "id": 4,
+      "name": "Tokyo",
+      "image": "/src/assets/images/regions/tokyo.jpg",
+      "key": "TOKYO",
+      "description": "Japan's busy capital mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. Experience unique culture, shopping, and dining.",
+      "bestTime": "MAR-APR",
+      "duration": "5 days",
+      "bestTimeDetail": "Cherry blossom season"
+    }
+  ]

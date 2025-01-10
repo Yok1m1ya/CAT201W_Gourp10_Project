@@ -1,0 +1,27 @@
+.filter-sort {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .filter-sort select {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    background-color: white;
+    color: #1e3a8a;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .filter-sort select:hover {
+    border-color: #1e3a8a;
+  }
+  
+  .filter-sort select:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+  }

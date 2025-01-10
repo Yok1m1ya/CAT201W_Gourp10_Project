@@ -1,0 +1,72 @@
+/* 总容器 */
+.banner-container {
+    width: 100%;
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 20px 0
+  }
+  
+  /* 搜索条容器 */
+  .search-bar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* 搜索条样式 */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+    padding: 5px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 50px;
+  }
+  
+  .search-bar button {
+    background-color: #5568e4;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar button:hover {
+    background-color: #2f3e9b;
+  }
+  
+  /* 轮播图容器 */
+  .slider-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: 400px; /* 调整高度以适应设计 */
+    object-fit: cover; /* 确保图片按比例缩放 */
+    border-radius: 16px; /* 图片圆角 */
+  }
+  

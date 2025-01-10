@@ -1,0 +1,91 @@
+.product-detail-container {
+    display: flex;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.product-detail-left {
+    flex: 3;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.product-detail-right {
+    flex: 2;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.product-image {
+    width: 100%;
+    height: 400px; /* 固定高度 */
+    object-fit: cover; /* 确保图片不会变形 */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-rating {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.price-info {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.ticket-type,
+.booking-date {
+    margin-bottom: 20px;
+}
+
+.ticket-type select,
+.booking-date input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.book-now-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.book-now-button:hover {
+    background-color: #0056b3;
+}
+
+.product-highlights,
+.product-description {
+    margin-top: 20px;
+    line-height: 1.8;
+    font-size: 16px;
+    color: #555;
+}

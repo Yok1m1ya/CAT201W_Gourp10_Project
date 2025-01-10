@@ -1,0 +1,45 @@
+.travelers-favorite {
+    padding: 40px 20px;
+  }
+  
+  .travelers-favorite h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .product-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .product-card {
+    min-width: 250px;
+    flex-shrink: 0;
+  }
+
+  .product-list {
+    display: flex; /* 使用 Flexbox 布局 */
+    overflow-x: auto; /* 添加水平滚动 */
+    gap: 16px; /* 卡片间距 */
+    padding: 10px 0;
+  }
+  
+  .product-list::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .product-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  
+  .product-list::-webkit-scrollbar-track {
+    background-color: #f9f9f9;
+  }
+  
+  
+  
