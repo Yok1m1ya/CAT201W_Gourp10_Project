@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(45deg, #87CEEB, #B0E0E6);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: #333;
+            position: relative;
+            z-index: 100;
+        }
+
+        .location-selector {
+            margin: 20px auto;
+            width: fit-content;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .location-button {
+            padding: 12px 24px;
+            background: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-weight: bold;
+            min-width: 180px;
+        }
+
+        .location-dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            top: 100%;
+            left: 0;
+            margin-top: 8px;
+            width: 180px;
+        }
+
+        .location-dropdown.active {
+            display: block;
+        }
+
+        .location-option {
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .location-option:hover {
+            background: #f0f0f0;
+        }
+
+        .attractions {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .attraction-card {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .attraction-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s;
+        }
+
+        .attraction-card:hover .attraction-bg {
+            transform: scale(1.1);
+        }
+
+        .attraction-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            z-index: 1;
+        }
+
+        .rank {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            background: #ff5722;
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .price {
+            color: #fff;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .profile-link {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">WETRAVEL</div>
+        <a href="user-profile.html" class="profile-link">
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="./userPic.png" alt="User avatar">
+                </div>
+                <span>Hi, User</span>
+            </div>
+        </a>
+    </nav>
+
+    <div class="hero">
+        <h1>Best Attractions</h1>
+        <p>The ranking of activities is based on monthly page views, saves, bookings and reviews</p>
+        
+        <div class="location-selector">
+            <button class="location-button" onclick="toggleDropdown()">
+                <span id="selected-location">Tokyo</span>
+                <span>▼</span>
+            </button>
+            <div class="location-dropdown" id="locationDropdown">
+                <div class="location-option" onclick="selectLocation('Tokyo')">Tokyo</div>
+                <div class="location-option" onclick="selectLocation('Kuala Lumpur')">Kuala Lumpur</div>
+                <div class="location-option" onclick="selectLocation('Singapore')">Singapore</div>
+                <div class="location-option" onclick="selectLocation('Shanghai')">Shanghai</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="attractions" id="attractions">
+        <!-- Attraction cards will be dynamically loaded here -->
+    </div>
+
+    <script>
+        const attractionsData = {
+    'Tokyo': [
+        {
+            name: 'Tokyo Disneyland',
+            rating: 4.8,
+            reviews: '73,148',
+            price: '¥4,158',
+            description: 'Spend 1 day at Tokyo Disneyland with pre-booked e-tickets',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Tokyo tower',
+            rating: 4.7,
+            reviews: '65,234',
+            price: '¥2,000',
+            description: 'Visit the tallest tower in Japan with observation deck access',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Tokyo national museum',
+            rating: 4.6,
+            reviews: '58,923',
+            price: 'Free',
+            description: 'Discover Japenese rich history and art at the iconic Tokyo National Museum',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Shibuya sky',
+            rating: 4.5,
+            reviews: '45,678',
+            price: '¥3,500',
+            description: 'Soar above Tokyo and enjoy breathtaking panoramic views at Shibuya Sky',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Disney Sea',
+            rating: 4.4,
+            reviews: '42,156',
+            price: 'Free',
+            description: 'Immerse yourself in magical adventures and ocean-themed wonders at Tokyo DisneySea',
+            image: '/KL.jpg'
+        }
+    ],
+    'Kuala Lumpur': [
+        {
+            name: 'Sunway Lagoon',
+            rating: 4.7,
+            reviews: '45,234',
+            price: 'MYR 80',
+            description: 'Dive into excitement and enjoy endless fun with water rides, theme parks, and wildlife at Sunway Lagoon',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'KL tower',
+            rating: 4.6,
+            reviews: '38,567',
+            price: 'Free',
+            description: 'Experience stunning city views and towering heights at the iconic KL Tower in the heart of Kuala Lumpur',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'aquaria KLCC',
+            rating: 4.5,
+            reviews: '32,789',
+            price: 'MYR 50',
+            description: 'Explore the wonders of marine life and dive into an underwater adventure at Aquaria KLCC',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'twin tower',
+            rating: 4.4,
+            reviews: '28,456',
+            price: 'Free',
+            description: 'Marvel at the iconic skyline and breathtaking views from the world-renowned Petronas Twin Towers.',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'museum Negara',
+            rating: 4.3,
+            reviews: '25,678',
+            price: 'MYR 65',
+            description: 'Explore Malaysia\'s history and heritage at Museum Negara',
+            image: '/api/placeholder/400/300'
+        }
+    ],
+    'Singapore': [
+        {
+            name: 'universal studio Singapore',
+            rating: 4.9,
+            reviews: '82,456',
+            price: 'SGD 28',
+            description: 'Experience thrilling rides and meet iconic characters at Universal Studios Singapore',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'national museum of Singapore',
+            rating: 4.8,
+            reviews: '75,234',
+            price: 'SGD 98',
+            description: 'Discover Singapore\'s history and culture at the National Museum of Singapore',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'night safari',
+            rating: 4.7,
+            reviews: '68,123',
+            price: 'SGD 23',
+            description: 'Embark on a nocturnal adventure and witness wildlife in their natural night-time habitat at the Night Safari',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Gardens by the bay',
+            rating: 4.6,
+            reviews: '62,345',
+            price: 'SGD 48',
+            description: 'Explore the futuristic gardens and stunning landscapes at Gardens by the Bay',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'marina bay skypark observation deck',
+            rating: 4.5,
+            reviews: '58,789',
+            price: 'SGD 35',
+            description: 'Enjoy panoramic views of Singapore’s skyline from the Marina Bay SkyPark Observation Deck',
+            image: '/api/placeholder/400/300'
+        }
+    ],
+    'Shanghai': [
+        {
+            name: 'Yu Garden',
+            rating: 4.8,
+            reviews: '65,789',
+            price: '¥100',
+            description: 'Experience the historic beauty and tranquil landscapes of Yu Garden in Shanghai',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Shanghai Center',
+            rating: 4.7,
+            reviews: '58,234',
+            price: '¥80',
+            description: 'Visit the stunning Shanghai Center and enjoy panoramic views of the city skyline',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Disneyland',
+            rating: 4.6,
+            reviews: '52,345',
+            price: '¥180',
+            description: 'Immerse yourself in magical adventures and meet beloved characters at Shanghai Disneyland',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Oriental Pearl',
+            rating: 4.5,
+            reviews: '48,567',
+            price: 'Free',
+            description: 'Take in breathtaking views of Shanghai from the iconic Oriental Pearl Tower',
+            image: '/api/placeholder/400/300'
+        },
+        {
+            name: 'Jing an Temple',
+            rating: 4.4,
+            reviews: '45,123',
+            price: '¥399',
+            description: 'Discover the serene beauty and history of Jing\'an Temple in Shanghai.',
+            image: '/api/placeholder/400/300'
+        }
+    ]
+};
+
+        function toggleDropdown() {
+            document.getElementById('locationDropdown').classList.toggle('active');
+        }
+
+        function selectLocation(location) {
+            document.getElementById('selected-location').textContent = location;
+            document.getElementById('locationDropdown').classList.remove('active');
+            loadAttractions(location);
+        }
+
+        function loadAttractions(location) {
+            const attractionsContainer = document.getElementById('attractions');
+            attractionsContainer.innerHTML = '';
+
+            attractionsData[location].forEach((attraction, index) => {
+                const card = `
+                    <a href="attraction-detail.html?name=${encodeURIComponent(attraction.name)}" class="attraction-card">
+                        <span class="rank">${index + 1}</span>
+                        <div class="attraction-bg" style="background-image: url('${attraction.image}')"></div>
+                        <div class="attraction-content">
+                            <h3>${attraction.name}</h3>
+                            <p class="rating">★ ${attraction.rating} (${attraction.reviews} reviews)</p>
+                            <p>${attraction.description}</p>
+                            <p class="price">From ${attraction.price}</p>
+                        </div>
+                    </a>
+                `;
+                attractionsContainer.innerHTML += card;
+            });
+        }
+
+        // 初始加载东京的景点
+        loadAttractions('Tokyo');
+
+        // 点击其他区域关闭下拉菜单
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('locationDropdown');
+            const button = document.querySelector('.location-button');
+            if (!button.contains(event.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
