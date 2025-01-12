@@ -44,6 +44,18 @@
             overflow: hidden;
         }
 
+        .location-tag {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 2;
+        }
+
         .hero {
             background: linear-gradient(45deg, #87CEEB, #B0E0E6);
             padding: 3rem 2rem;
@@ -189,7 +201,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">WETRAVEL</div>
+        <div class="logo">WeTravel</div>
         <a href="user-profile.html" class="profile-link">
             <div class="user-profile">
                 <div class="avatar">
@@ -206,10 +218,11 @@
         
         <div class="location-selector">
             <button class="location-button" onclick="toggleDropdown()">
-                <span id="selected-location">Tokyo</span>
+                <span id="selected-location">ALL</span>
                 <span>▼</span>
             </button>
             <div class="location-dropdown" id="locationDropdown">
+                <div class="location-option" onclick="selectLocation('ALL')">ALL</div>
                 <div class="location-option" onclick="selectLocation('Tokyo')">Tokyo</div>
                 <div class="location-option" onclick="selectLocation('Kuala Lumpur')">Kuala Lumpur</div>
                 <div class="location-option" onclick="selectLocation('Singapore')">Singapore</div>
@@ -405,28 +418,63 @@
         }
 
         function loadAttractions(location) {
-            const attractionsContainer = document.getElementById('attractions');
-            attractionsContainer.innerHTML = '';
+    const attractionsContainer = document.getElementById('attractions');
+    attractionsContainer.innerHTML = '';
 
-            attractionsData[location].forEach((attraction, index) => {
-                const card = `
-                    <a href="attraction-detail.html?name=${encodeURIComponent(attraction.name)}" class="attraction-card">
-                        <span class="rank">${index + 1}</span>
-                        <div class="attraction-bg" style="background-image: url('${attraction.image}')"></div>
-                        <div class="attraction-content">
-                            <h3>${attraction.name}</h3>
-                            <p class="rating">★ ${attraction.rating} (${attraction.reviews} reviews)</p>
-                            <p>${attraction.description}</p>
-                            <p class="price">From ${attraction.price}</p>
-                        </div>
-                    </a>
-                `;
-                attractionsContainer.innerHTML += card;
+    if (location === 'ALL') {
+        // 合并所有城市的景点
+        let allAttractions = [];
+        for (let city in attractionsData) {
+            attractionsData[city].forEach(attraction => {
+                allAttractions.push({
+                    ...attraction,
+                    location: city  // 添加城市信息
+                });
             });
         }
+        
+        // 按评分排序
+        allAttractions.sort((a, b) => b.rating - a.rating);
+
+        // 显示所有景点
+        allAttractions.forEach((attraction, index) => {
+            const card = `
+                <a href="attraction-detail.html?name=${encodeURIComponent(attraction.name)}" class="attraction-card">
+                    <span class="rank">${index + 1}</span>
+                    <span class="location-tag">${attraction.location}</span>
+                    <div class="attraction-bg" style="background-image: url('${attraction.image}')"></div>
+                    <div class="attraction-content">
+                        <h3>${attraction.name}</h3>
+                        <p class="rating">★ ${attraction.rating} (${attraction.reviews} reviews)</p>
+                        <p>${attraction.description}</p>
+                        <p class="price">From ${attraction.price}</p>
+                    </div>
+                </a>
+            `;
+            attractionsContainer.innerHTML += card;
+        });
+    } else {
+        // 原有的单个城市景点显示逻辑保持不变
+        attractionsData[location].forEach((attraction, index) => {
+            const card = `
+                <a href="attraction-detail.html?name=${encodeURIComponent(attraction.name)}" class="attraction-card">
+                    <span class="rank">${index + 1}</span>
+                    <div class="attraction-bg" style="background-image: url('${attraction.image}')"></div>
+                    <div class="attraction-content">
+                        <h3>${attraction.name}</h3>
+                        <p class="rating">★ ${attraction.rating} (${attraction.reviews} reviews)</p>
+                        <p>${attraction.description}</p>
+                        <p class="price">From ${attraction.price}</p>
+                    </div>
+                </a>
+            `;
+            attractionsContainer.innerHTML += card;
+        });
+    }
+}
 
         // 初始加载东京的景点
-        loadAttractions('Tokyo');
+        loadAttractions('ALL');
 
         // 点击其他区域关闭下拉菜单
         document.addEventListener('click', function(event) {

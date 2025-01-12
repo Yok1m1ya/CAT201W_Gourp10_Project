@@ -9,34 +9,67 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e6f7ff;
+            background: url('https://source.unsplash.com/1600x900/?travel,nature') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
         .container {
-            max-width: 600px;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 2px solid #b3d9ff;
+            width: 80%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
             text-align: center;
+            padding: 20px;
         }
         h1 {
-            color: #004080;
+            background-color: #007acc;
+            color: white;
+            margin: 0;
+            padding: 20px 0;
+            font-size: 1.8rem;
         }
         .order-info {
-            padding: 20px;
+            padding: 30px 40px;
         }
         .order-info h2 {
-            color: #004080;
+            color: #007acc;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
         }
         .order-info p {
+            font-size: 18px;
+            margin: 12px 0;
+            text-align: left;
+        }
+        .order-info p strong {
+            display: inline-block;
+            width: 150px;
+        }
+        .footer {
+            background-color: #f2f2f2;
+            padding: 15px;
+            font-size: 15px;
+            color: #666;
+        }
+        .explore-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
             font-size: 16px;
-            margin: 5px 0;
-            color: #003366;
+        }
+        .explore-btn:hover {
+            background-color: #005f99;
         }
     </style>
 </head>
@@ -49,9 +82,13 @@
             <p><strong>Email:</strong> </p>
             <p><strong>Ticket Type:</strong> </p>
             <p><strong>Quantity:</strong> </p>
-            <p><strong>Total:</strong> </p>
+            <p><strong>Total:</strong>  </p>
+            <a href="#" class="explore-btn">Explore More Tours</a>
         </div>
+        
     </div>
 </body>
 </html>
+
+
 
