@@ -1,91 +1,153 @@
 .product-detail-container {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     margin: 40px auto;
     max-width: 1200px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.product-detail-left {
+    padding: 0 20px;
+  }
+  
+  .product-detail-left {
     flex: 3;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.product-detail-right {
-    flex: 2;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.product-image {
-    width: 100%;
-    height: 400px; /* 固定高度 */
-    object-fit: cover; /* 确保图片不会变形 */
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.product-name {
-    font-size: 32px;
+    min-width: 0;
+  }
+  
+  .product-detail-right {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .product-name {
+    font-size: 38px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #333;
-}
-
-.product-rating {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.price-info {
+  }
+  
+  .product-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .rating {
+    color: #ffc107;
+    font-size: 18px
+    
+  }
+  
+  .dot {
+    color: #999;
+  }
+  
+  .image-container {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  
+  .section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid #eee;
+  }
+  
+  .section-title {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  .highlights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .bullet {
+    color: #1a73e8;
+  }
+  
+  .description {
+    line-height: 1.6;
+    color: #666;
+  }
+  
+  .booking-card {
+    position: sticky;
+    top: 24px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #eee;
+  }
+  
+  .price-section {
     margin-bottom: 20px;
-}
-
-.ticket-type,
-.booking-date {
-    margin-bottom: 20px;
-}
-
-.ticket-type select,
-.booking-date input {
+  }
+  
+  .price-label {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+  
+  .price-amount {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a73e8;
+  }
+  
+  .book-now-button {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.book-now-button {
-    width: 100%;
-    padding: 14px;
-    background-color: #007bff;
+    background-color: #1a73e8;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
+    padding: 14px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    text-align: center;
-}
-
-.book-now-button:hover {
-    background-color: #0056b3;
-}
-
-.product-highlights,
-.product-description {
-    margin-top: 20px;
-    line-height: 1.8;
+    margin-bottom: 12px;
+    transition: background-color 0.2s;
+  }
+  
+  .book-now-button:hover {
+    background-color: #1557b0;
+  }
+  
+  .wishlist-button {
+    width: 100%;
+    background-color: white;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 14px;
     font-size: 16px;
-    color: #555;
-}
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .wishlist-button:hover {
+    background-color: #f5f5f5;
+    border-color: #999;
+  }

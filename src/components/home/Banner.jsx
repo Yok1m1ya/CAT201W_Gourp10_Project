@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import styles from "./Banner.module.css";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
@@ -16,6 +17,21 @@ const Banner = () => {
       }
   };
 
+  const Arrow = ({ onClick, direction }) => (
+    <div
+      className={`${styles.arrow} ${direction === "left" ? styles.left : styles.right}`}
+      onClick={onClick}
+    >
+      {direction === "left" ? "<" : ">"}
+    </div>
+  );
+
+  Arrow.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    direction: PropTypes.oneOf(["left", "right"]).isRequired,
+  };
+
+
   const settings = {
     dots: true,
     infinite: true,
@@ -24,6 +40,8 @@ const Banner = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    nextArrow: <Arrow direction="right" />,
+    prevArrow: <Arrow direction="left" />,
   };
 
   return (
@@ -46,21 +64,21 @@ const Banner = () => {
         <Slider {...settings}>
           <div>
             <img
-              src="/src/assets/images/banners/Banner01.png"
+              src="/public/Luo_images/banners/Banner01.png"
               alt="Banner 1"
               className={styles['banner-image']}
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/banners/Banner02.png"
+              src="/public/Luo_images/banners/Banner02.png"
               alt="Banner 2"
               className={styles['banner-image']}
             />
           </div>
           <div>
             <img
-              src="/src/assets/images/banners/Banner03.png"
+              src="/public/Luo_images/banners/Banner03.png"
               alt="Banner 3"
               className={styles['banner-image']}
             />

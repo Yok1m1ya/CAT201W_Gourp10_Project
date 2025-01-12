@@ -12,7 +12,7 @@ const CategorySelection = () => {
 
   return (
     <div className={styles["category-section-container"]}>
-      <h2 className={styles["section-title"]}>Discover More</h2>
+      <h2 className={styles["section-title"]}>Discover More?</h2>
      <div className={styles["category-section"]}>
       {categories.map((category, index) => (
         <div

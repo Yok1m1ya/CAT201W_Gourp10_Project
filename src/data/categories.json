@@ -2,25 +2,25 @@
     {
       "id": 1,
       "name": "Zoo & Aquarium",
-      "icon": "/src/assets/images/categories/zoo.png",
+      "icon": "/public/Luo_images/categories/zoo.png",
       "categoryKey": "zoo"
     },
     {
       "id": 2,
       "name": "Theme Park",
-      "icon": "/src/assets/images/categories/theme-park.png",
+      "icon": "/public/Luo_images/categories/theme-park.png",
       "categoryKey": "theme-park"
     },
     {
       "id": 3,
       "name": "Museum & Historical Site",
-      "icon": "/src/assets/images/categories/museum.png",
+      "icon": "/public/Luo_images/categories/museum.png",
       "categoryKey": "museum"
     },
     {
       "id": 4,
       "name": "landmark",
-      "icon": "/src/assets/images/categories/landmark.png",
+      "icon": "/public/Luo_images/categories/landmark.png",
       "categoryKey": "landmark"
     }
   ]

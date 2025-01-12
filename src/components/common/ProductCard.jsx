@@ -41,7 +41,7 @@ const ProductCard = ({ product }) => {
           </span>{" "}
           •
           <span className={styles["product-location"]}>
-            {formatRegion(product.region)}
+            {formatRegion(product.regionname)}
           </span>
         </div>
         <h3 className={styles["product-title"]}>{product.name}</h3>
