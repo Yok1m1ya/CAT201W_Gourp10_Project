@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE"); // 允许的方法
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // 允许的请求头
         response.setHeader("Access-Control-Allow-Credentials", "true"); // 是否允许发送Cookie
-        
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 

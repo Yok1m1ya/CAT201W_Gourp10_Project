@@ -4,6 +4,7 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
+    <!-- Signup Servlet -->
     <servlet>
         <servlet-name>SignupServlet</servlet-name>
         <servlet-class>servlets.SignupServlet</servlet-class>
@@ -13,6 +14,7 @@
         <url-pattern>/api/signup</url-pattern>
     </servlet-mapping>
 
+    <!-- Login Servlet -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlets.LoginServlet</servlet-class>
@@ -22,8 +24,28 @@
         <url-pattern>/api/login</url-pattern>
     </servlet-mapping>
 
+    <!-- Booking Servlet -->
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>servlets.BookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/api/booking</url-pattern>
+    </servlet-mapping>
 
+    <!-- Order Info Servlet -->
+    <servlet>
+        <servlet-name>OrderInfoServlet</servlet-name>
+        <servlet-class>servlets.OrderInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderInfoServlet</servlet-name>
+        <url-pattern>/api/orderinfo</url-pattern>
+    </servlet-mapping>
+
+    <!-- Default Welcome Page -->
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>order.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
